@@ -1,0 +1,158 @@
+$black: #5a5a7c;
+$grey: transparentize($black, .5);
+
+@mixin transform($value...) {
+          transform: $value;
+     -moz-transform: $value;
+       -o-transform: $value;
+      -ms-transform: $value;
+  -webkit-transform: $value;
+}
+
+@mixin transition($value...) {
+          transition: $value;
+     -moz-transition: $value;
+       -o-transition: $value;
+      -ms-transition: $value;
+  -webkit-transition: $value;
+}
+
+@mixin shadow($value...) {
+          box-shadow: $value;
+     -moz-box-shadow: $value;
+       -o-box-shadow: $value;
+      -ms-box-shadow: $value;
+  -webkit-box-shadow: $value;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+    -webkit-user-select: none;
+     -khtml-user-select: none;
+       -moz-user-select: none;
+        -ms-user-select: none;
+            user-select: none;
+}
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation:    $animations;
+  -o-animation:      $animations;
+  animation:         $animations;
+}
+
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+      @content;
+  }
+  @-moz-keyframes #{$animationName} {
+      @content;
+  }
+  @-o-keyframes #{$animationName} {
+      @content;
+  }
+  @keyframes #{$animationName} {
+      @content;
+  }
+}
+
+* { margin: 0; padding: 0; list-style:  none; box-sizing: border-box;}
+
+a { cursor: pointer; text-decoration: none; }
+
+/* Float stuff */
+.left { float: left; }
+.right { float: right; }
+.cleared:after { content: ""; clear: both; display: block; }
+.centered { display: inline-block; vertical-align: middle; }
+.hidden { display: none; }
+
+body {
+  width: 100%;
+  font-size: 15px;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #fff;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+  color: $black;
+  position: relative;
+  overflow: hidden;
+  overflow-y: scroll;
+  height: 100vh;
+}
+
+p,
+span,
+button,
+input,
+textarea {
+  font-family: 'Montserrat', sans-serif;
+}
+
+
+.aligned {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.row {
+  width: 90%;
+  display: block;
+  margin: 0 auto;
+}
+
+#loader {
+  position: fixed;
+  background-color: #fff;
+  z-index: 999;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+
+  &:before {
+    height: 100%;
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  img {
+    display: inline-block;
+    vertical-align: middle;
+  }
+}
+
+[slide-in] {
+  @include transform(translate(0, -32px));
+  @include transition(.3s);
+  opacity: 0;
+}
+
+.loaded [loaded-in],
+.current [current-in] {
+  @include transform(translate(0, 0));
+  opacity: 1;
+}
+
+@for $i from 1 through 10 {
+  [slide-in='#{$i}'] {
+    @include transition(.3s $i/10+s);
+  }
+}
+
+@import 'header', 'carousel';
+

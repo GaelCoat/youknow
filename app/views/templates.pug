@@ -1,0 +1,8 @@
+script(type="text/template", id="tpl-project")
+	section(data-id='{{id}}')
+		img(to-load='{{project.url}}')
+		.row
+			h3(slide-in='8', current-in) {{project.name}}
+			span(slide-in='9', current-in) {{project.alt}}
+		.timer(data-color='{{project.color}}')
+

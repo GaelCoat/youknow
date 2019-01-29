@@ -1,0 +1,42 @@
+header {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	padding-top: 4vw;
+
+	img.left {
+		width: 75px;
+		float: left;
+		margin-top: -35px;
+	}
+
+	ul {
+		float: right;
+
+		li {
+			display: inline-block;
+			vertical-align: middle;
+			margin-left: 42px;
+
+			a {
+				display: block;
+				color: $grey;
+				font-size: 15px;
+				font-weight: 500;
+			}
+
+			&.active a {
+				color: $black;
+			}
+		}
+	}
+
+	&:after {
+		float: none;
+		clear: both;
+		display: block;
+		content: "";
+		width: 1px;
+	}
+}

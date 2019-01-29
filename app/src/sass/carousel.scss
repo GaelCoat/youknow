@@ -1,0 +1,65 @@
+.carousel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	height: 100vh;
+
+	section {
+		text-align: center;
+		height: 100%;
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		display: none;
+
+		&:before {
+			display: inline-block;
+			vertical-align: middle;
+			content: "";
+			height: 100%;
+		}
+
+		.timer {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 5px;
+			width: 0%;
+		}
+
+		img {
+			display: inline-block;
+			vertical-align: middle;
+			height: 80vh;
+		}
+
+		.row {
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			margin: auto;
+			padding-bottom: 4vw;
+			text-align: left;
+
+			h3 {
+				font-size: 22px;
+				color: $black;
+				font-weight: 600;
+			}
+
+			span {
+				color: $grey;
+				font-size: 18px;
+				display: block;
+			}
+		}
+
+		&.current {
+
+			
+		}
+	}
+}
